@@ -3,16 +3,27 @@ var letter = document.getElementById("letter");
 var number = document.getElementById("number");
 var special = document.getElementById("special");
 
-var lowerCaseLetters = /[a-z]/g;
-if(myInput.value.match(letter)) {  
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+myInput.onkeyup = function() {
+
+  var letters = /[a-z]/g;
+  if(myInput.value.match(letters)) {  
   letter.classList.remove("invalid");
   letter.classList.add("valid");
-} else {
+  } else {
   letter.classList.remove("valid");
   letter.classList.add("invalid");
-}
-  var number = /[0-9]/g;
-  if(myInput.value.match(number)) {  
+  }
+
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
     number.classList.remove("invalid");
     number.classList.add("valid");
   } else {
@@ -20,11 +31,12 @@ if(myInput.value.match(letter)) {
     number.classList.add("invalid");
   }
   
-  var special = /[!@#$%^&*]/g;
-  if(myInput.value.match(special)) {  
+  var specials = /[!@#$%^&*]/g;
+  if(myInput.value.match(specials)) {  
     special.classList.remove("invalid");
     special.classList.add("valid");
   } else {
     special.classList.remove("valid");
     special.classList.add("invalid");
   }
+}
